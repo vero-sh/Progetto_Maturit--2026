@@ -24,11 +24,31 @@
 | Grafici | Chart.js |
 | IA | Groq API (modello LLaMA 3.1) |
 
-## Avvio
+## Requisiti
 
-```bash
+- Node.js 22 o superiore
+- Una chiave API gratuita di [Groq](https://console.groq.com)
+
+## Installazione
+
+1. Clona il repository
+git clone https://github.com/vero-sh/Progetto_Maturit--2026.git
+
+
+2. Entra nella cartella dell'app
+cd Progetto_Maturit--2026/Salute-benessere-app
+
+
+3. Installa le dipendenze
 npm install
-GROQ_API_KEY=... npm start
-Il server si avvia su http://localhost:3000.
 
 
+4. Crea un file `.env` nella cartella `Salute-benessere-app` con il contenuto:
+GROQ_API_KEY=la_tua_chiave_api
+
+
+5. Avvia il server
+npm start
+
+
+6. Apri il browser su `http://localhost:3000`
