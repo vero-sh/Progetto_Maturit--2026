@@ -23,15 +23,7 @@
 | Frontend | HTML, CSS, JavaScript vanilla |
 | Grafici | Chart.js |
 | IA | Groq API (modello LLaMA 3.1) |
-
-## Performance e SEO
-
-- **Preconnect** — connessione anticipata a Google Fonts, Font Awesome e jsDelivr per ridurre i tempi di caricamento
-- **Meta description** — descrizione ottimizzata per i motori di ricerca
-- **Open Graph** — anteprima corretta del sito quando condiviso sui social
-- **Favicon** — icona personalizzata nella tab del browser
-- **Theme-color** — colore della barra del browser su mobile coerente con il design
-- **noindex** — le pagine private (login, dashboard) non vengono indicizzate da Google
+| SEO & Performance | Meta tag, Open Graph, preconnect, favicon |
 
 ## Requisiti
 
@@ -61,3 +53,4 @@ npm start
 
 
 6. Apri il browser su `http://localhost:3000`
+   
