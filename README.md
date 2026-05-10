@@ -9,7 +9,6 @@
 - **Calcolo automatico del BMI** — indice di massa corporea con categoria (sottopeso, normopeso, sovrappeso, obesità)
 - **Calcolo del metabolismo basale (BMR)** — calorie giornaliere a riposo secondo la formula di Mifflin-St Jeor
 - **Grafico andamento peso** — visualizza l'evoluzione del peso nel tempo
-- **Gauge BMI** — indicatore semicircolare visivo della propria categoria BMI
 - **Storico misurazioni** — tabella con tutte le misurazioni salvate, eliminabili singolarmente
 - **Corvi** — assistente IA integrato (powered by Groq / LLaMA 3) che conosce i dati dell'utente e risponde a domande su alimentazione, esercizio fisico e stile di vita
 
