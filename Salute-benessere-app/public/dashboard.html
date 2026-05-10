@@ -3,11 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Salute & Benessere – Dashboard</title>
+  <title>Corvia – Dashboard</title>
+
+  <!-- SEO -->
+  <meta name="description" content="La tua dashboard personale Corvia: BMI, peso, metabolismo e assistente IA.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#667eea">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <!-- Chart.js per i grafici -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 </head>
 <body>
@@ -16,7 +30,7 @@
   <nav class="navbar">
     <div class="navbar-brand" onclick="window.location.href='/'">
       <img src="logo.png" class="logo-spin logo-nav" alt="Logo">
-      <span>Salute & Benessere</span>
+      <span>Corvia</span>
     </div>
     <div class="navbar-user">
       <span id="benvenuto"></span>
@@ -142,10 +156,10 @@
 
     <!-- Riga 4: Chat IA -->
     <div class="card ai-card">
-      <h3><i class="fas fa-robot"></i> Assistente IA per la salute</h3>
+      <h3><i class="fas fa-robot"></i> Corvi — Assistente IA</h3>
       <div id="chat-messaggi" class="chat-messaggi">
         <div class="msg-ai">
-          <div class="msg-bubble">Ciao! Sono il tuo assistente per la salute 💪 Conosco il tuo BMI iniziale e i tuoi dati. Chiedimi qualsiasi cosa su alimentazione, esercizio o benessere!</div>
+          <div class="msg-bubble">Ciao! Sono <strong>Corvi</strong>, l'assistente IA di Corvia 🌿 Conosco i tuoi dati di salute e sono qui per aiutarti. Chiedimi qualsiasi cosa su alimentazione, esercizio o benessere!</div>
         </div>
       </div>
       <div class="chat-input-row">
@@ -169,7 +183,7 @@
       if (!res.ok) { window.location.href = '/'; return; }
 
       const utente = await res.json();
-      document.getElementById('benvenuto').textContent = `Ciao, ${utente.nome} 👋`;
+      document.getElementById('benvenuto').textContent = `Ciao, ${utente.nome}`;
 
       // Pre-compila altezza dall'ultima misurazione se disponibile
       caricaMisurazioni();

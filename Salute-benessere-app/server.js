@@ -186,7 +186,7 @@ app.post('/api/chat', autenticato, async (req, res) => {
     contestoSalute = `Nome: ${utente.nome}, età: ${utente.eta} anni, sesso: ${utente.sesso === 'M' ? 'maschio' : 'femmina'}. BMI iniziale: ${prima.bmi} (${categoriaBmiStr(prima.bmi)}), peso iniziale: ${prima.peso} kg. BMI attuale: ${ultima.bmi} (${categoriaBmiStr(ultima.bmi)}), peso attuale: ${ultima.peso} kg, altezza: ${ultima.altezza} cm, metabolismo basale attuale: ${ultima.bmr} kcal/giorno.`;
   }
 
-  const systemPrompt = `Sei un assistente esperto di salute e benessere. Rispondi sempre in italiano in modo amichevole, pratico e motivante. Considera sempre i dati aggiornati dell'utente, non quelli iniziali. Dati dell'utente: ${contestoSalute}`;
+  const systemPrompt = `Sei Corvi, l'assistente IA di Corvia, un'app per il monitoraggio della salute. Rispondi sempre in italiano in modo amichevole, pratico e motivante. Considera sempre i dati aggiornati dell'utente, non quelli iniziali. Dati dell'utente: ${contestoSalute}`;
 
   try {
     const completion = await groq.chat.completions.create({
