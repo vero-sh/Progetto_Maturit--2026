@@ -24,6 +24,15 @@
 | Grafici | Chart.js |
 | IA | Groq API (modello LLaMA 3.1) |
 
+## Performance e SEO
+
+- **Preconnect** — connessione anticipata a Google Fonts, Font Awesome e jsDelivr per ridurre i tempi di caricamento
+- **Meta description** — descrizione ottimizzata per i motori di ricerca
+- **Open Graph** — anteprima corretta del sito quando condiviso sui social
+- **Favicon** — icona personalizzata nella tab del browser
+- **Theme-color** — colore della barra del browser su mobile coerente con il design
+- **noindex** — le pagine private (login, dashboard) non vengono indicizzate da Google
+
 ## Requisiti
 
 - Node.js 22 o superiore
@@ -32,14 +41,14 @@
 ## Installazione
 
 1. Clona il repository:
-`git clone https://github.com/vero-sh/Progetto_Maturit--2026.git`
+git clone https://github.com/vero-sh/Progetto_Maturit--2026.git
 
 
-2. Entra nella cartella dell'app
+2. Entra nella cartella dell'app:
 cd Progetto_Maturit--2026/Salute-benessere-app
 
 
-3. Installa le dipendenze
+3. Installa le dipendenze:
 npm install
 
 
@@ -47,7 +56,7 @@ npm install
 GROQ_API_KEY=la_tua_chiave_api
 
 
-5. Avvia il server
+5. Avvia il server:
 npm start
 
 
