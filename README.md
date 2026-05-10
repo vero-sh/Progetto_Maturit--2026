@@ -32,7 +32,7 @@
 ## Installazione
 
 1. Clona il repository:
-'git clone https://github.com/vero-sh/Progetto_Maturit--2026.git'
+`git clone https://github.com/vero-sh/Progetto_Maturit--2026.git`
 
 
 2. Entra nella cartella dell'app
