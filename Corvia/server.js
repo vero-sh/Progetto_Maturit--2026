@@ -215,6 +215,27 @@ app.post('/api/chat', autenticato, async (req, res) => {
   }
 });
 
+// ── API: Admin ────────────────────────────────────────────────────────────────
+function adminAuth(req, res, next) {
+  const token = req.headers['x-admin-token'];
+  if (!process.env.ADMIN_TOKEN || token !== process.env.ADMIN_TOKEN) {
+    return res.status(403).json({ errore: 'Non autorizzato' });
+  }
+  next();
+}
+
+app.get('/admin/utenti', adminAuth, (req, res) => {
+  const utenti = db.prepare('SELECT id, nome, email, eta, sesso FROM utenti ORDER BY id').all();
+  res.json(utenti);
+});
+
+app.delete('/admin/utenti/:id', adminAuth, (req, res) => {
+  db.prepare('DELETE FROM misurazioni WHERE user_id = ?').run(req.params.id);
+  const result = db.prepare('DELETE FROM utenti WHERE id = ?').run(req.params.id);
+  if (result.changes === 0) return res.status(404).json({ errore: 'Utente non trovato' });
+  res.json({ successo: true });
+});
+
 // ── Pagine HTML ───────────────────────────────────────────────────────────────
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
