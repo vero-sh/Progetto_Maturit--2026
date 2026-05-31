@@ -66,7 +66,8 @@ function calcolaBMI(peso, altezza) {
 // Formula di Mifflin-St Jeor per il metabolismo basale
 function calcolaBMR(peso, altezza, eta, sesso) {
   const base = (10 * peso) + (6.25 * altezza) - (5 * eta);
-  return Math.round(sesso === 'M' ? base + 5 : base - 161);
+  if (sesso === 'M') return Math.round(base + 5);
+  return Math.round(base - 161);
 }
 
 // ── API: Autenticazione ───────────────────────────────────────────────────────
@@ -186,12 +187,16 @@ app.post('/api/chat', autenticato, async (req, res) => {
   if (!prima) {
     contestoSalute = `Nome: ${utente.nome}, età: ${utente.eta} anni, sesso: ${utente.sesso === 'M' ? 'maschio' : 'femmina'}. Non ha ancora inserito misurazioni.`;
   } else if (prima.id === ultima.id) {
-    contestoSalute = `Nome: ${utente.nome}, età: ${utente.eta} anni, sesso: ${utente.sesso === 'M' ? 'maschio' : 'femmina'}. BMI: ${ultima.bmi} (${categoriaBmiStr(ultima.bmi)}), peso: ${ultima.peso} kg, altezza: ${ultima.altezza} cm, metabolismo basale: ${ultima.bmr} kcal/giorno.`;
+    contestoSalute = `Nome: ${utente.nome}, età: ${utente.eta} anni, sesso: ${utente.sesso === 'M' ? 'maschio' : 'femmina'}. BMI: ${ultima.bmi} 
+    (${categoriaBmiStr(ultima.bmi)}), peso: ${ultima.peso} kg, altezza: ${ultima.altezza} cm, metabolismo basale: ${ultima.bmr} kcal/giorno.`;
   } else {
-    contestoSalute = `Nome: ${utente.nome}, età: ${utente.eta} anni, sesso: ${utente.sesso === 'M' ? 'maschio' : 'femmina'}. BMI iniziale: ${prima.bmi} (${categoriaBmiStr(prima.bmi)}), peso iniziale: ${prima.peso} kg. BMI attuale: ${ultima.bmi} (${categoriaBmiStr(ultima.bmi)}), peso attuale: ${ultima.peso} kg, altezza: ${ultima.altezza} cm, metabolismo basale attuale: ${ultima.bmr} kcal/giorno.`;
+    contestoSalute = `Nome: ${utente.nome}, età: ${utente.eta} anni, sesso: ${utente.sesso === 'M' ? 'maschio' : 'femmina'}. BMI iniziale: ${prima.bmi} (${categoriaBmiStr(prima.bmi)}), 
+    peso iniziale: ${prima.peso} kg. BMI attuale: ${ultima.bmi} (${categoriaBmiStr(ultima.bmi)}), peso attuale: ${ultima.peso} kg, altezza: ${ultima.altezza} cm, 
+    metabolismo basale attuale: ${ultima.bmr} kcal/giorno.`;
   }
 
-  const systemPrompt = `Il tuo nome è Corvi. Sei l'assistente IA dell'app Corvia per il monitoraggio della salute. Se ti chiedono come ti chiami, rispondi solo "Corvi". Rispondi sempre in italiano in modo amichevole, pratico e motivante. Considera sempre i dati aggiornati dell'utente, non quelli iniziali. Dati dell'utente: ${contestoSalute}`;
+  const systemPrompt = `Il tuo nome è Corvi. Sei l'assistente IA dell'app Corvia per il monitoraggio della salute. Se ti chiedono come ti chiami, rispondi solo "Corvi". 
+  Rispondi sempre in italiano in modo amichevole, pratico e motivante. Considera sempre i dati aggiornati dell'utente, non quelli iniziali. Dati dell'utente: ${contestoSalute}`;
 
   try {
     const completion = await groq.chat.completions.create({
