@@ -356,7 +356,7 @@
             const cy = top + height * 0.82;
             c.save();
             c.font = `700 34px Poppins`;
-            c.fillStyle = '#1e293b';
+            c.fillStyle = document.documentElement.getAttribute('data-theme') === 'dark' ? '#f1f5f9' : '#1e293b';
             c.textAlign = 'center';
             c.textBaseline = 'middle';
             c.fillText(bmi ?? '–', cx, cy);
